@@ -8,8 +8,9 @@ void    stackprinter(s_list **stack)
     ft_printf("stack content : ");
     while (tmp->next != *stack)
     {
-        ft_printf("%d,", tmp->content);
+        ft_printf("%d, ", tmp->content);
         tmp = tmp->next;
     }
     ft_printf("%d.\n", tmp->content);
+    return ;
 }

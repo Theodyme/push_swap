@@ -11,16 +11,17 @@
 # **************************************************************************** #
 
 SRCS	=	 delete_this.c \
+			stack_utilities.c \
 			library/ft_atoi.c \
 			main.c \
-			ft_printf/libftprintf.a \
 
+LIB		=	ft_printf/libftprintf.a
 
-OBJ	= ${SRCS:.c=.o}
+OBJ		= ${SRCS:.c=.o}
 
 NAME	= pushswap
 
-CC	= gcc
+CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
@@ -28,7 +29,7 @@ CFLAGS	= -Wall -Wextra -Werror
 	${CC} ${CFLAGS} -c $< -o $@
 
 $(NAME):	${OBJ}
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
 
 all:	${NAME}
 
