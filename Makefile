@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 SRCS	=	 delete_this.c \
+			instructions.c \
 			stack_utilities.c \
 			library/ft_atoi.c \
 			main.c \

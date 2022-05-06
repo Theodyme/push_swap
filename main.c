@@ -9,6 +9,12 @@ int     main(int ac, char **av)
         return (0);
     }
     stackbuilder(av, &a);
+    if (dupchecker(&a) == 1)
+    {
+        return (0);
+    }
+    stackprinter(&a);
+    i_swap(&a, 'a');
     stackprinter(&a);
     return (0);
 }

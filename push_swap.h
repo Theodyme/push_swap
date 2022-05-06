@@ -8,15 +8,16 @@ typedef struct s_list
     struct s_list   *prev;
 	int			content;
 	struct s_list	*next;
-}           s_list;
+}          		s_list;
 
-int    dupchecker(s_list **stack);
-int	ft_atoi(const char *str);
-int	ft_isdigit(int n);
-int	ft_isspace(char c);
-void    stackprinter(s_list **stack);
-void    addback(s_list **stack, int nbr);
-void  	addfront(s_list **stack, int nbr);
+int				dupchecker(s_list **stack);
+int				ft_atoi(const char *str);
+int				ft_isdigit(int n);
+int				ft_isspace(char c);
+int     		i_swap(s_list **stack, char flag);
+void    		stackprinter(s_list **stack);
+void    		addback(s_list **stack, int nbr);
+void  			addfront(s_list **stack, int nbr);
 struct s_list   **stackbuilder(char **av, s_list **stack);
 
 

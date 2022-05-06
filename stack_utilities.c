@@ -3,15 +3,23 @@
 int    dupchecker(s_list **stack)
 {
     s_list  *tmp;
+    s_list  *node;
+    int checker;
 
-    tmp = *stack;
-    ft_printf("stack content : ");
-    while (tmp->next != *stack)
+    node = *stack;
+    while (node->next != *stack)
     {
-        ft_printf("%d, ", tmp->content);
-        tmp = tmp->next;
+        checker = node->content;
+        tmp = node->next;
+        while (tmp->next != (*stack)->next)
+        {
+            // ft_printf("I'm looking for %d. The current node contains %d.\n", checker, tmp->content);
+            if (tmp->content == checker)
+                return (1);
+            tmp = tmp->next;
+        }
+        node = node->next;
     }
-    ft_printf("%d.\n", tmp->content);
     return (0);
 }
 
@@ -72,18 +80,16 @@ struct s_list   **stackbuilder(char **av, s_list **stack)
         while(av[j][i])
         {
                 k = 0;
-                while(av[j][i] && ft_isdigit(av[j][i + k]) == 1)
+                while(av[j][i] && (ft_isdigit(av[j][i + k]) == 1 || av[j][i + k] == '-'))
                 {
                     k++;
                 }
                 if (k != 0)
                 {
-//                    ft_printf("adding the number %d to the stack...\n", ft_atoi(&av[j][i]));
                     addfront(stack, ft_atoi((&av[j][i])));
                     i += (k - 1);
                 }
                 i++;
-//                ft_printf("we're now on the char [%c] of the current argument. Next one is [%c].\n", av[j][i], av[j][i + 1]);
         }
         j++;
     }
