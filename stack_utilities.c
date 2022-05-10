@@ -60,9 +60,10 @@ void  addfront(s_list **stack, int nbr)
         return ;
     }
     last = (*stack)->prev;
-    node->next = *stack;
     node->prev = last;
+    node->next = *stack;
     last->next = node;
+    (*stack)->prev = node;
     *stack = node;
     return ;
 }
@@ -86,7 +87,7 @@ struct s_list   **stackbuilder(char **av, s_list **stack)
                 }
                 if (k != 0)
                 {
-                    addfront(stack, ft_atoi((&av[j][i])));
+                    addback(stack, ft_atoi((&av[j][i])));
                     i += (k - 1);
                 }
                 i++;
