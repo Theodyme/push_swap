@@ -1,9 +1,29 @@
 #include "push_swap.h"
 
+int    checker(s_list **stack)
+{
+    struct s_list  *tmp;
+
+    if ((*stack) && !(*stack)->next)
+    {
+        ft_printf("OK");
+        return (1);
+    }
+    tmp = (*stack);
+    while (tmp->next != *stack)
+    {
+        if (tmp->content > tmp->next->content)
+            return (0);
+        tmp = tmp->next;
+    }
+        ft_printf("OK");
+        return (1);
+}
+
 int    dupchecker(s_list **stack)
 {
-    s_list  *tmp;
-    s_list  *node;
+    struct s_list  *tmp;
+    struct s_list  *node;
     int checker;
 
     node = *stack;
@@ -34,6 +54,7 @@ void  addback(s_list **stack, int nbr)
     {
         node->next = node;
         node->prev = node;
+        node->index = 1;
         *stack = node;
         return ;
     }
@@ -41,6 +62,7 @@ void  addback(s_list **stack, int nbr)
     node->next = *stack;
     last->next = node;
     node->prev = last;
+    node->index = (node->prev->index + 1);
     (*stack)->prev = node;
     return ;
 }
@@ -68,7 +90,7 @@ void  addfront(s_list **stack, int nbr)
     return ;
 }
 
-struct s_list   **stackbuilder(char **av, s_list **stack)
+void   stackbuilder(char **av, s_list **stack)
 {
     int     i;
     int     j;
@@ -94,5 +116,5 @@ struct s_list   **stackbuilder(char **av, s_list **stack)
         }
         j++;
     }
-    return (stack);
+    return ;
 }

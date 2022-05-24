@@ -2,8 +2,8 @@
 
 int     i_swap(s_list **stack, char flag)
 {
-    s_list  *head;
-    s_list  *top;
+    struct s_list  *head;
+    struct s_list  *top;
 
     head = (*stack);
     top = head->next;
@@ -14,14 +14,13 @@ int     i_swap(s_list **stack, char flag)
     head = head->next;
     head->prev = top;
     (*stack) = top;
-
     ft_printf("s%c\n", flag);
     return (1);
 }
 
 int     i_push(s_list **from, s_list **to, char flag)
 {
-    s_list  *tofree;
+    struct s_list  *tofree;
 
     tofree = (*from);
     addfront(to, (*from)->content);

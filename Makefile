@@ -11,7 +11,10 @@
 # **************************************************************************** #
 
 SRCS	=	 delete_this.c \
+			sorting_small.c \
 			instructions.c \
+			index_utilities.c \
+			sort_utilities.c \
 			stack_utilities.c \
 			library/ft_atoi.c \
 			main.c \
@@ -27,7 +30,7 @@ CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
 %.o: 	%.c
-	${CC} ${CFLAGS} -c $< -o $@
+	${CC} ${CFLAGS} -g -c $< -o $@
 
 $(NAME):	${OBJ}
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIB)
