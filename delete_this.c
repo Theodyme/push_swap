@@ -20,6 +20,21 @@ void    stackprinter(s_list **stack, char flag)
     return ;
 }
 
+void    arrayprinter(int *tab)
+{
+    int i;
+
+    i = 0;
+    ft_printf("The array contains the following numbers: ");
+    while (tab[i + 1])
+    {
+        ft_printf("%d, ", tab[i]);
+        i++;
+    }
+    ft_printf("%d.\n", tab[i]);
+    return ;
+}
+
 void    indexprinter(s_list **stack, char flag)
 {
     struct s_list  *tmp;

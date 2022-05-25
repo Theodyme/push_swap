@@ -14,16 +14,18 @@ SRCS	=	 delete_this.c \
 			sorting_small.c \
 			instructions.c \
 			index_utilities.c \
+			quicksort.c \
 			sort_utilities.c \
 			stack_utilities.c \
 			library/ft_atoi.c \
+			library/ft_calloc.c \
 			main.c \
 
 LIB		=	ft_printf/libftprintf.a
 
 OBJ		= ${SRCS:.c=.o}
 
-NAME	= pushswap
+NAME	= push_swap
 
 CC		= gcc
 
