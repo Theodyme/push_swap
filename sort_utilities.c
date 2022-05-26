@@ -38,7 +38,13 @@ int     get_size(s_list **stack)
 
 int     get_med(s_list **stack)
 {
-    // ft_printf("the median integer of the stack is %d.\n", (((get_size(stack))/ 2) + 1));
-    return (((get_size(stack))/ 2) + 1);
+    int med;
+
+    med = (get_size(stack) / 2);
+    // ft_printf("the median is %d.\n", med);
+    if (((med % 2) != 0) && med != 1)
+        med += 1;
+    // ft_printf("the median is %d.\n", med);
+    return (med);
 }
 

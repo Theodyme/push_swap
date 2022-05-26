@@ -17,6 +17,8 @@ int		sort_two(s_list **stack);
 
 /*		Quicksort					*/
 void    quicksort(s_list **a, s_list **b);
+int    	rot_cost(s_list **stack, int index);
+void    rot_to_i(s_list **stack, char flag, int cost);
 
 /*		Instructions functions		*/
 int	    i_push(s_list **from, s_list **to, char cto);

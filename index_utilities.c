@@ -40,6 +40,7 @@ void    sort_index(s_list **stack)
     while (tab[i] && tmp->content != tab[i])
         i++;
     tmp->index = i + 1;
+    free(tab);
     return ;
 }
 
