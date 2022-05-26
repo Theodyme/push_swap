@@ -5,26 +5,50 @@ void    quicksort(s_list **a, s_list **b)
     struct s_list   *tmp;
     int             cost;
     int             med;
+    int             i;
 
     while (get_size(a) != 2)
     {
+        i = 1;
         tmp = (*a);
         med = get_med(a);
         sort_index(a);
-        while (tmp->next != (*a))
+        while (i <= med)
         {
-            if (tmp->index <= med)
+            tmp = (*a);
+            indexprinter(a, 'a');
+            ft_printf("looking for the index %d...\n", i);
+            while (tmp->next != (*a))
             {
-                ft_printf("looking for the cost of rotating to %d.\n", tmp->content);
-                cost = rot_cost(a, tmp->index);
-                rot_to_i(a, 'a', cost);
-                ft_printf("pushing %d to stack b.\n", (*a)->content);
-                i_push(a, b, 'b');
-                stackprinter(a, 'a');
-                indexprinter(a, 'a');
+                ft_printf("current index is %d.\n", tmp->index);
+                if (tmp->index == i)
+                {
+                    ft_printf("looking for the cost of rotating to %d.\n", tmp->content);
+                    cost = rot_cost(a, tmp->index);
+                    rot_to_i(a, 'a', cost);
+                    ft_printf("pushing %d to stack b.\n", (*a)->content);
+                    i_push(a, b, 'b');
+                    stackprinter(a, 'a');
+                    break ;
+                }
+                tmp = tmp->next;
             }
-            tmp = tmp->next;
+            i++;
         }
+        // while (tmp->next != (*a))
+        // {
+        //     if (tmp->index <= med)
+        //     {
+        //         ft_printf("looking for the cost of rotating to %d.\n", tmp->content);
+        //         cost = rot_cost(a, tmp->index);
+        //         rot_to_i(a, 'a', cost);
+        //         ft_printf("pushing %d to stack b.\n", (*a)->content);
+        //         i_push(a, b, 'b');
+        //         stackprinter(a, 'a');
+        //         indexprinter(a, 'a');
+        //     }
+        //     tmp = tmp->next;
+        // }
         ft_printf("\n\nmoving to renewed a stack. ");
         stackprinter(a, 'a');
     }
