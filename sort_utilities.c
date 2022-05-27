@@ -19,6 +19,24 @@ int     get_max(s_list **stack)
     return (max);
 }
 
+int     get_min(s_list **stack)
+{
+    int min;
+    struct s_list   *tmp;
+
+    min = (*stack)->content;
+    tmp = (*stack);
+    while (tmp->next != (*stack))
+    {
+        if (min > tmp->content)
+            min = tmp->content;
+        tmp = tmp->next;
+    }
+    if (min > tmp->content)
+        min = tmp->content;
+    return (min);
+}
+
 int     get_size(s_list **stack)
 {
     int size;
@@ -44,7 +62,7 @@ int     get_med(s_list **stack)
     // ft_printf("the median is %d.\n", med);
     if (((med % 2) != 0) && med != 1)
         med += 1;
-    // ft_printf("the median is %d.\n", med);
+    ft_printf("the median is %d.\n", med);
     return (med);
 }
 

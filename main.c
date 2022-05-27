@@ -51,9 +51,12 @@ Quick sort:
     X A function that set indexes
     X A function that gives the size of the stack
     X A function that gives the median index
-    - A function that iterates on stack A
+    X A function that iterates on stack A
       to push to B if the number is inferior to the median
 Insert sort:
-    - A function that search for the closest superior number
-    - A function that gives which way it should rotate
+to do > add a "cost" variable to my linked list
+    - a function that recalculate this variable for each node in the list using rot_cost
+    - a function that finds the closest sup number (using substraction)
+
+    - A function that push to A
 */

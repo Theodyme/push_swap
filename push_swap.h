@@ -34,6 +34,7 @@ void	sort_tab(int *tab, int size);
 
 /*		Sort utilities functions	*/
 int    	get_max(s_list **stack);
+int     get_min(s_list **stack);
 int    	get_med(s_list **stack);
 int    	get_size(s_list **stack);
 
