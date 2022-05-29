@@ -20,6 +20,26 @@ void    stackprinter(s_list **stack, char flag)
     return ;
 }
 
+void    backprinter(s_list **stack, char flag)
+{
+    struct s_list  *tmp;
+
+    if ((*stack) == NULL)
+    {
+        ft_printf("%c stack is empty. ", flag);
+        return ;
+    }
+    tmp = (*stack)->prev;
+    ft_printf("%c stack content from prev (from top to bottom) : ", flag);
+    while (tmp != *stack)
+    {
+        ft_printf("%d, ", tmp->content);
+        tmp = tmp->prev;
+    }
+    ft_printf("%d\n", tmp->content);
+    return ;
+}
+
 void    arrayprinter(int *tab)
 {
     int i;
@@ -52,5 +72,25 @@ void    indexprinter(s_list **stack, char flag)
         tmp = tmp->next;
     }
     ft_printf("%d\n", tmp->index);
+    return ;
+}
+
+void    costprinter(s_list **stack, char flag)
+{
+    struct s_list  *tmp;
+
+    if ((*stack) == NULL)
+    {
+        ft_printf("%c stack is empty. ", flag);
+        return ;
+    }
+    tmp = *stack;
+    ft_printf("%c stack cost (from top to bottom) : ", flag);
+    while (tmp->next != *stack)
+    {
+        ft_printf("%d, ", tmp->cost);
+        tmp = tmp->next;
+    }
+    ft_printf("%d\n", tmp->cost);
     return ;
 }

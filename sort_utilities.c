@@ -62,7 +62,7 @@ int     get_med(s_list **stack)
     // ft_printf("the median is %d.\n", med);
     if (((med % 2) != 0) && med != 1)
         med += 1;
-    ft_printf("the median is %d.\n", med);
+    // ft_printf("the median is %d.\n", med);
     return (med);
 }
 

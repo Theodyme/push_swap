@@ -1,13 +1,21 @@
 #include "push_swap.h"
 
+void    dispatch(int ac, s_list **a, s_list **b)
+{
+    if(ac == 3)
+        sort_two(a);
+    else if(ac == 4)
+        sort_three(a);
+    else if(ac == 6)
+        sort_five(a, b);
+    stackprinter(a, 'a');
+    return ;
+}
+
 int     main(int ac, char **av)
 {
     static struct s_list   *a = NULL;
     static struct s_list   *b = NULL;
-
-    // int *tab;
-    // tab = calloc(sizeof(int), 5);
-    // arrayprinter(tab);
 
     (void)b;
 
@@ -16,42 +24,30 @@ int     main(int ac, char **av)
     stackbuilder(av, &a);
     if (dupchecker(&a) == 1)
         return (0);
-    if ((checker(&a)) == 1)
+    if ((checker(&a, &b)) == 1)
         return (1);
-    if(ac == 3)
-        sort_two(&a);
-    else if(ac == 4)
-        sort_three(&a);
-    // else if(ac == 6)
-    //     sort_five(&a, &b);
-    // else
-    //     quicksort(&a, &b);
-    // i_push(&b, &a, 'a');
-
-    // get_med(&a);
-    i_push(&a, &b, 'b');
-    i_push(&a, &b, 'b');
-    i_push(&a, &b, 'b');
-    i_push(&a, &b, 'b');
-    i_push(&b, &a, 'a');
-    i_push(&b, &a, 'a');
-    i_push(&b, &a, 'a');
-    i_push(&b, &a, 'a');
-    stackprinter(&a, 'a');
-    stackprinter(&b, 'b');
-    // // set_index(&a);
-    // // set_index(&b);
-    // get_med(&a);
-    // get_med(&b);
-    // indexprinter(&a, 'a');
-    // indexprinter(&b, 'b');
+    if (ac == 3 || ac == 4 || ac == 6)
+        dispatch(ac, &a, &b);
+    else
+    {
+        quicksort(&a, &b);
+        if (a->content > a->next->content)
+            i_swap(&a, 'a');
+        while (b)
+            insertsort(&a, &b);
+    }
+    
+    if ((checker(&a, &b)) == 1)
+        return (1);
     return (0);
 }
 
 /*
+
+REVOIR LE CHECKER
 To write:
     X Sort_three
-    - Sort_five
+    X Sort_five
     X Check if the pile is sorted
 Quick sort:
     X A function that gives the biggest number
@@ -62,8 +58,7 @@ Quick sort:
       to push to B if the number is inferior to the median
 Insert sort:
 to do > add a "cost" variable to my linked list
+        globally testing for each number in B what it costs to push to A
     - a function that recalculate this variable for each node in the list using rot_cost
     - a function that finds the closest sup number (using substraction)
-
-    - A function that push to A
 */

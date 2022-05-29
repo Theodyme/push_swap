@@ -1,24 +1,17 @@
 #include "push_swap.h"
 
-int     i_swap(s_list **stack, char flag)
+void    i_swap(s_list **stack, char flag)
 {
-    struct s_list  *head;
-    struct s_list  *top;
+    int tmp;
 
-    head = (*stack);
-    top = head->next;
-    head->next = top->next;
-    top->next = head;
-    top->prev = (*stack)->prev;
-    (*stack)->prev->next = top;
-    head = head->next;
-    head->prev = top;
-    (*stack) = top;
+    tmp = (*stack)-> content;
+    (*stack)->content = (*stack)->next->content;
+    (*stack)->next->content = tmp;
     ft_printf("s%c\n", flag);
-    return (1);
+    return ;
 }
 
-int     i_push(s_list **from, s_list **to, char flag)
+void    i_push(s_list **from, s_list **to, char flag)
 {
     struct s_list  *tofree;
 
@@ -29,19 +22,39 @@ int     i_push(s_list **from, s_list **to, char flag)
     (*from) = (*from)->next;
     free(tofree);
     ft_printf("p%c\n", flag);
-    return (1);
+    return ;
 }
 
-int     i_rotate(s_list **stack, char flag)
+void    i_rotate(s_list **stack, char flag)
 {
     (*stack) = (*stack)->next;
     ft_printf("r%c\n", flag);
-    return (1);
+    return ;
 }
 
-int     i_reverser(s_list **stack, char flag)
+void    i_reverser(s_list **stack, char flag)
 {
     (*stack) = (*stack)->prev;
     ft_printf("rr%c\n", flag);
-    return (1);
+    return ;
+}
+
+void    i_double(s_list **a, s_list **b, char flag)
+{
+    if (flag == 's')
+    {
+        i_swap(a, 'a');
+        i_swap(b, 'b');
+    }
+    if (flag == 'r')
+    {
+        i_rotate(a, 'a');
+        i_rotate(b, 'b');
+    }
+    if (flag == 'v')
+    {
+        i_reverser(a, 'a');
+        i_reverser(b, 'b');
+    }
+    return ;
 }

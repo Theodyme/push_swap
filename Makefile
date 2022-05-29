@@ -14,9 +14,11 @@ SRCS	=	 delete_this.c \
 			sorting_small.c \
 			instructions.c \
 			index_utilities.c \
+			insertsort.c \
 			quicksort.c \
 			sort_utilities.c \
 			stack_utilities.c \
+			library/ft_abs.c \
 			library/ft_atoi.c \
 			library/ft_calloc.c \
 			main.c \

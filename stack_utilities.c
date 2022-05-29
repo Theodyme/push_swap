@@ -1,23 +1,25 @@
 #include "push_swap.h"
 
-int    checker(s_list **stack)
+int    checker(s_list **a, s_list **b)
 {
     struct s_list  *tmp;
 
-    if ((*stack) && !(*stack)->next)
+    if ((*b))
+        return (0);
+    if ((*a) && !(*a)->next)
     {
         ft_printf("OK");
         return (1);
     }
-    tmp = (*stack);
-    while (tmp->next != *stack)
+    tmp = (*a);
+    while (tmp->next != *a)
     {
         if (tmp->content > tmp->next->content)
             return (0);
         tmp = tmp->next;
     }
-        ft_printf("OK");
-        return (1);
+    ft_printf("OK");
+    return (1);
 }
 
 int    dupchecker(s_list **stack)
@@ -33,7 +35,6 @@ int    dupchecker(s_list **stack)
         tmp = node->next;
         while (tmp->next != (*stack)->next)
         {
-            // ft_printf("I'm looking for %d. The current node contains %d.\n", checker, tmp->content);
             if (tmp->content == checker)
                 return (1);
             tmp = tmp->next;

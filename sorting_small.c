@@ -38,8 +38,6 @@ void    sort_three(s_list  **stack)
         else
             i_rotate(stack, 'a');
     }
-    ft_printf("stacks after the sort_three:\n");
-    stackprinter(stack, 'a');
     return ;
 }
 
@@ -51,20 +49,14 @@ void     sort_five(s_list  **a, s_list **b)
     while (i-- != 0)
     {
         sort_index(a);
-        indexprinter(a, 'a');
         rot_to_i(a, 'a', rot_cost(a, 1));
         i_push(a, b, 'b');
     }
-    stackprinter(a, 'a');
     sort_three(a);
-    stackprinter(b, 'b');
     i = 2;
     while (i-- != 0)
     {
-        stackprinter(a, 'a');
-        stackprinter(b, 'b');
         i_push(b, a, 'a');
     }
-    stackprinter(a, 'a');
     return ;
 }
