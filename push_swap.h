@@ -12,8 +12,9 @@ typedef struct s_list
 }          		s_list;
 
 /*		Sorting main functions		*/
-int    	sort_three(s_list  **stack);
-int		sort_two(s_list **stack);
+void	sort_five(s_list **a, s_list **b);
+void	sort_three(s_list **stack);
+void	sort_two(s_list **stack);
 
 /*		Quicksort					*/
 void    quicksort(s_list **a, s_list **b);

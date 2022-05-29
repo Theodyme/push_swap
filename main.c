@@ -20,18 +20,25 @@ int     main(int ac, char **av)
         return (1);
     if(ac == 3)
         sort_two(&a);
-    if(ac == 4)
+    else if(ac == 4)
         sort_three(&a);
-    quicksort(&a, &b);
-
+    // else if(ac == 6)
+    //     sort_five(&a, &b);
+    // else
+    //     quicksort(&a, &b);
+    // i_push(&b, &a, 'a');
 
     // get_med(&a);
-    // i_push(&a, &b, 'b');
-    // i_push(&a, &b, 'b');
-    // i_push(&a, &b, 'b');
-    // i_push(&a, &b, 'b');
-    // stackprinter(&a, 'a');
-    // stackprinter(&b, 'b');
+    i_push(&a, &b, 'b');
+    i_push(&a, &b, 'b');
+    i_push(&a, &b, 'b');
+    i_push(&a, &b, 'b');
+    i_push(&b, &a, 'a');
+    i_push(&b, &a, 'a');
+    i_push(&b, &a, 'a');
+    i_push(&b, &a, 'a');
+    stackprinter(&a, 'a');
+    stackprinter(&b, 'b');
     // // set_index(&a);
     // // set_index(&b);
     // get_med(&a);
@@ -43,7 +50,7 @@ int     main(int ac, char **av)
 
 /*
 To write:
-    - Sort_three
+    X Sort_three
     - Sort_five
     X Check if the pile is sorted
 Quick sort:
