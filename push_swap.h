@@ -26,9 +26,10 @@ void    rot_to_i(s_list **stack, char flag, int cost);
 /*		Insertsort					*/
 int		cost_to_top(s_list **stack, int i);
 void    fill_costs(s_list **a, s_list **b);
-int     find_nearest(s_list **a, int i);
+s_list  *find_nearest(s_list **a, int i);
 void    insertsort(s_list **a, s_list **b);
-int     node_cost(s_list **stack, int i);
+void    is_double(s_list **a, s_list **b, s_list **nearest, s_list **target);
+void    executing_costs(s_list **a, s_list **b, s_list **target, s_list **nearest);
 
 /*		Instructions functions		*/
 void    i_push(s_list **from, s_list **to, char cto);
@@ -41,7 +42,6 @@ void    i_double(s_list **a, s_list **b, char flag);
 void    fill_tab(int *tab, s_list **stack);
 void    sort_index(s_list **stack);
 void	sort_tab(int *tab, int size);
-// void    set_index(s_list **stack);
 
 /*		Sort utilities functions	*/
 int    	get_max(s_list **stack);

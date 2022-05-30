@@ -11,7 +11,7 @@ void    quicksort(s_list **a, s_list **b)
         sort_index(a);
         tmp = (*a);
         med = get_med(a);
-        while (tmp->next != (*a))
+        while (tmp->next != (*a) && get_size(a) > 2)
         {
             if (get_size(a) == 3)
             {
@@ -20,21 +20,13 @@ void    quicksort(s_list **a, s_list **b)
             }
             if ((tmp->index <= med) || (get_size(a) == 3))
             {
-                // ft_printf("looking for the cost of rotating to %d.\n", tmp->content);
                 cost = rot_cost(a, tmp->index);
                 rot_to_i(a, 'a', cost);
-                // ft_printf("pushing %d to stack b.\n", (*a)->content);
                 i_push(a, b, 'b');
-                // stackprinter(a, 'a');
-                // indexprinter(a, 'a');
             }
             tmp = tmp->next;
         }
-        // ft_printf("\n\nmoving to renewed a stack. ");
-        // stackprinter(a, 'a');
     }
-    stackprinter(a, 'a');
-    stackprinter(b, 'b');
     return ;
 
 }
@@ -42,13 +34,12 @@ void    quicksort(s_list **a, s_list **b)
 void    rot_to_i(s_list **stack, char flag, int cost)
 {
     if (cost == 0)
-        return;
+        return ;
     if (cost < 0)
     {
         while (cost != 0)
         {
             i_rotate(stack, flag);
-            // stackprinter(stack, 'a');
             cost++;
         }
     }
@@ -57,7 +48,6 @@ void    rot_to_i(s_list **stack, char flag, int cost)
         while (cost != 0)
         {
             i_reverser(stack, flag);
-            // stackprinter(stack, 'a');
             cost--;
         }
     }
@@ -88,7 +78,6 @@ int    rot_cost(s_list **stack, int index)
         tmp = tmp->prev;
         up++;
     }
-    // ft_printf("down = %d, up = %d.\n", down, up);
     if (down < up)
         return (down * (-1));
     else

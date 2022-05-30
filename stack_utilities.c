@@ -36,7 +36,9 @@ int    dupchecker(s_list **stack)
         while (tmp->next != (*stack)->next)
         {
             if (tmp->content == checker)
+            {
                 return (1);
+            }
             tmp = tmp->next;
         }
         node = node->next;
@@ -49,7 +51,7 @@ void  addback(s_list **stack, int nbr)
     struct s_list   *node;
     struct s_list   *last;
 
-    node = malloc(sizeof(s_list));
+    node = ft_calloc(sizeof(s_list));
     node->content = nbr;
     if(!*stack)
     {
