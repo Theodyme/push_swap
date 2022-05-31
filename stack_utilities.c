@@ -20,7 +20,7 @@ int	checker(s_list **a, s_list **b)
 		return (0);
 	if ((*a) && !(*a)->next)
 	{
-		ft_printf("OK");
+		// ft_printf("OK");
 		return (1);
 	}
 	tmp = (*a);
@@ -30,7 +30,7 @@ int	checker(s_list **a, s_list **b)
 			return (0);
 		tmp = tmp->next;
 	}
-	ft_printf("OK");
+	// ft_printf("OK");
 	return (1);
 }
 
@@ -61,7 +61,7 @@ void	addback(s_list **stack, int nbr)
 	struct s_list	*node;
 	struct s_list	*last;
 
-	node = ft_calloc(sizeof(s_list));
+	node = malloc(sizeof(s_list));
 	node->content = nbr;
 	if(!*stack)
 	{

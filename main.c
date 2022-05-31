@@ -39,5 +39,7 @@ int     main(int ac, char **av)
         cost = cost_to_top(&a, get_min(&a));
         rot_to_i(&a, 'a', cost);
     }
+	stackprinter(&a, 'a');
+	stackprinter(&b, 'b');
     return (0);
 }
