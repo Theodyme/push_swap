@@ -1,123 +1,133 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utilities.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 13:54:46 by flplace           #+#    #+#             */
+/*   Updated: 2022/05/31 14:02:10 by flplace          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int    checker(s_list **a, s_list **b)
+int	checker(s_list **a, s_list **b)
 {
-    struct s_list  *tmp;
+	struct s_list	*tmp;
 
-    if ((*b))
-        return (0);
-    if ((*a) && !(*a)->next)
-    {
-        ft_printf("OK");
-        return (1);
-    }
-    tmp = (*a);
-    while (tmp->next != *a)
-    {
-        if (tmp->content > tmp->next->content)
-            return (0);
-        tmp = tmp->next;
-    }
-    ft_printf("OK");
-    return (1);
+	if ((*b))
+		return (0);
+	if ((*a) && !(*a)->next)
+	{
+		ft_printf("OK");
+		return (1);
+	}
+	tmp = (*a);
+	while (tmp->next != *a)
+	{
+		if (tmp->content > tmp->next->content)
+			return (0);
+		tmp = tmp->next;
+	}
+	ft_printf("OK");
+	return (1);
 }
 
 int    dupchecker(s_list **stack)
 {
-    struct s_list  *tmp;
-    struct s_list  *node;
-    int checker;
+	struct s_list	*tmp;
+	struct s_list	*node;
+	int checker;
 
-    node = *stack;
-    while (node->next != *stack)
-    {
-        checker = node->content;
-        tmp = node->next;
-        while (tmp->next != (*stack)->next)
-        {
-            if (tmp->content == checker)
-            {
-                return (1);
-            }
-            tmp = tmp->next;
-        }
-        node = node->next;
-    }
-    return (0);
+	node = *stack;
+	while (node->next != *stack)
+	{
+		checker = node->content;
+		tmp = node->next;
+		while (tmp->next != (*stack)->next)
+		{
+			if (tmp->content == checker)
+			return (1);
+			tmp = tmp->next;
+		}
+		node = node->next;
+	}
+	return (0);
 }
 
-void  addback(s_list **stack, int nbr)
+void	addback(s_list **stack, int nbr)
 {
-    struct s_list   *node;
-    struct s_list   *last;
+	struct s_list	*node;
+	struct s_list	*last;
 
-    node = ft_calloc(sizeof(s_list));
-    node->content = nbr;
-    if(!*stack)
-    {
-        node->next = node;
-        node->prev = node;
-        node->index = 1;
-        *stack = node;
-        return ;
-    }
-    last = (*stack)->prev;
-    node->next = *stack;
-    last->next = node;
-    node->prev = last;
-    node->index = (node->prev->index + 1);
-    (*stack)->prev = node;
-    return ;
+	node = ft_calloc(sizeof(s_list));
+	node->content = nbr;
+	if(!*stack)
+	{
+		node->next = node;
+		node->prev = node;
+		node->index = 1;
+		*stack = node;
+		return ;
+	}
+	last = (*stack)->prev;
+	node->next = *stack;
+	last->next = node;
+	node->prev = last;
+	node->index = (node->prev->index + 1);
+	(*stack)->prev = node;
+	return ;
 }
 
-void  addfront(s_list **stack, int nbr)
+void	addfront(s_list **stack, int nbr)
 {
-    struct s_list   *node;
-    struct s_list   *last;
+	struct s_list	*node;
+	struct s_list	*last;
 
-    node = malloc(sizeof(s_list));
-    node->content = nbr;
-    if(!*stack)
-    {
-        node->next = node;
-        node->prev = node;
-        *stack = node;
-        return ;
-    }
-    last = (*stack)->prev;
-    node->prev = last;
-    node->next = *stack;
-    last->next = node;
-    (*stack)->prev = node;
-    *stack = node;
-    return ;
+	node = malloc(sizeof(s_list));
+	node->content = nbr;
+	if(!*stack)
+	{
+		node->next = node;
+		node->prev = node;
+		*stack = node;
+		return ;
+	}
+	last = (*stack)->prev;
+	node->prev = last;
+	node->next = *stack;
+	last->next = node;
+	(*stack)->prev = node;
+	*stack = node;
+	return ;
 }
 
-void   stackbuilder(char **av, s_list **stack)
+void	stackbuilder(char **av, s_list **stack)
 {
-    int     i;
-    int     j;
-    int     k;
+	int	i;
+	int	j;
+	int	k;
 
-    j = 1;
-    while(av[j])
-    {
-        i = 0;
-        while(av[j][i])
-        {
-                k = 0;
-                while(av[j][i] && (ft_isdigit(av[j][i + k]) == 1 || av[j][i + k] == '-'))
-                {
-                    k++;
-                }
-                if (k != 0)
-                {
-                    addback(stack, ft_atoi((&av[j][i])));
-                    i += (k - 1);
-                }
-                i++;
-        }
-        j++;
-    }
-    return ;
+	j = 1;
+	while(av[j])
+	{
+		i = 0;
+		while(av[j][i])
+		{
+			k = 0;
+			while(av[j][i] && (ft_isdigit(av[j][i + k]) == 1 || av[j][i + k] == '-'))
+ 			{
+				k++;
+			}
+			if (k != 0)
+			{
+				addback(stack, ft_atoi((&av[j][i])));
+				i += (k - 1);
+			}
+			i++;
+		}
+		j++;
+	}
+	return ;
 }
