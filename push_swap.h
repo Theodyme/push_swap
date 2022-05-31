@@ -28,7 +28,7 @@ int		cost_to_top(s_list **stack, int i);
 void    fill_costs(s_list **a, s_list **b);
 s_list  *find_nearest(s_list **a, int i);
 void    insertsort(s_list **a, s_list **b);
-void    is_double(s_list **a, s_list **b, s_list **nearest, s_list **target);
+void    is_double(s_list **nearest, s_list **target);
 void    executing_costs(s_list **a, s_list **b, s_list **target, s_list **nearest);
 
 /*		Instructions functions		*/
