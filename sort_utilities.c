@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_utilities.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 19:01:53 by flplace           #+#    #+#             */
+/*   Updated: 2022/05/31 19:31:58 by flplace          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int     get_max(s_list **stack)
+int	get_max(t_list **stack)
 {
-	int max;
-	struct s_list   *tmp;
+	int		max;
+	t_list	*tmp;
 
 	max = (*stack)->content;
 	tmp = (*stack);
@@ -18,10 +30,10 @@ int     get_max(s_list **stack)
 	return (max);
 }
 
-int     get_min(s_list **stack)
+int	get_min(t_list **stack)
 {
-	int min;
-	struct s_list   *tmp;
+	int		min;
+	t_list	*tmp;
 
 	min = (*stack)->content;
 	tmp = (*stack);
@@ -36,10 +48,10 @@ int     get_min(s_list **stack)
 	return (min);
 }
 
-int     get_size(s_list **stack)
+int	get_size(t_list **stack)
 {
-	int size;
-	struct s_list   *tmp;
+	int		size;
+	t_list	*tmp;
 
 	size = 0;
 	tmp = (*stack);
@@ -52,9 +64,9 @@ int     get_size(s_list **stack)
 	return (size);
 }
 
-int     get_med(s_list **stack)
+int	get_med(t_list **stack)
 {
-	int med;
+	int		med;
 
 	med = (get_size(stack) / 2);
 	if (((med % 2) != 0) && med != 1)
@@ -62,3 +74,22 @@ int     get_med(s_list **stack)
 	return (med);
 }
 
+void	is_double(t_list **a, t_list **b, t_list **nearest, t_list **target)
+{
+	if ((*a) != (*nearest) && (*b) != (*target) && ((*nearest)->cost * (*target)->cost) > 0)
+	{
+		while (((*target)->cost < 0) && ((*nearest)->cost < 0))
+		{
+			i_double(a, b, 'r');
+			(*target)->cost++;
+			(*nearest)->cost++;
+		}
+		while (((*target)->cost > 0) && ((*nearest)->cost > 0))
+		{
+			i_double(a, b, 'v');
+			(*target)->cost--;
+			(*nearest)->cost--;
+		}
+	}
+	return ;
+}

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   instructions.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 19:02:26 by flplace           #+#    #+#             */
+/*   Updated: 2022/05/31 19:24:08 by flplace          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	i_swap(s_list **stack, char flag)
+void	i_swap(t_list **stack, char flag)
 {
 	int	tmp;
 
@@ -12,9 +24,9 @@ void	i_swap(s_list **stack, char flag)
 	return ;
 }
 
-void	i_push(s_list **from, s_list **to, char flag)
+void	i_push(t_list **from, t_list **to, char flag)
 {
-    struct s_list	*tofree;
+	t_list	*tofree;
 
 	tofree = (*from);
 	addfront(to, (*from)->content);
@@ -33,7 +45,7 @@ void	i_push(s_list **from, s_list **to, char flag)
 	return ;
 }
 
-void	i_rotate(s_list **stack, char flag)
+void	i_rotate(t_list **stack, char flag)
 {
 	(*stack) = (*stack)->next;
 	if (flag)
@@ -41,7 +53,7 @@ void	i_rotate(s_list **stack, char flag)
 	return ;
 }
 
-void	i_reverser(s_list **stack, char flag)
+void	i_reverser(t_list **stack, char flag)
 {
 	(*stack) = (*stack)->prev;
 	if (flag)
@@ -49,19 +61,19 @@ void	i_reverser(s_list **stack, char flag)
 	return ;
 }
 
-void	i_double(s_list **a, s_list **b, char flag)
+void	i_double(t_list **a, t_list **b, char flag)
 {
 	if (flag == 's')
 	{
 		i_swap(a, '\0');
 		i_swap(b, '\0');
-	ft_printf("ss\n");
+		ft_printf("ss\n");
 	}
 	if (flag == 'r')
 	{
 		i_rotate(a, '\0');
 		i_rotate(b, '\0');
-	ft_printf("rr\n");
+		ft_printf("rr\n");
 	}
 	if (flag == 'v')
 	{

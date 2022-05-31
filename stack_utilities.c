@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utilities.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:54:46 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 14:02:10 by flplace          ###   ########.fr       */
+/*   Updated: 2022/05/31 19:27:17 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	checker(s_list **a, s_list **b)
+int	checker(t_list **a, t_list **b)
 {
-	struct s_list	*tmp;
+	t_list	*tmp;
 
 	if ((*b))
 		return (0);
@@ -34,10 +34,10 @@ int	checker(s_list **a, s_list **b)
 	return (1);
 }
 
-int    dupchecker(s_list **stack)
+int    dupchecker(t_list **stack)
 {
-	struct s_list	*tmp;
-	struct s_list	*node;
+	t_list	*tmp;
+	t_list	*node;
 	int checker;
 
 	node = *stack;
@@ -56,12 +56,12 @@ int    dupchecker(s_list **stack)
 	return (0);
 }
 
-void	addback(s_list **stack, int nbr)
+void	addback(t_list **stack, int nbr)
 {
-	struct s_list	*node;
-	struct s_list	*last;
+	t_list	*node;
+	t_list	*last;
 
-	node = malloc(sizeof(s_list));
+	node = malloc(sizeof(t_list));
 	node->content = nbr;
 	if(!*stack)
 	{
@@ -80,12 +80,12 @@ void	addback(s_list **stack, int nbr)
 	return ;
 }
 
-void	addfront(s_list **stack, int nbr)
+void	addfront(t_list **stack, int nbr)
 {
-	struct s_list	*node;
-	struct s_list	*last;
+	t_list	*node;
+	t_list	*last;
 
-	node = malloc(sizeof(s_list));
+	node = malloc(sizeof(t_list));
 	node->content = nbr;
 	if(!*stack)
 	{
@@ -103,7 +103,7 @@ void	addfront(s_list **stack, int nbr)
 	return ;
 }
 
-void	stackbuilder(char **av, s_list **stack)
+void	stackbuilder(char **av, t_list **stack)
 {
 	int	i;
 	int	j;

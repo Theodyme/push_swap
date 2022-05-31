@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/31 19:02:12 by flplace           #+#    #+#             */
+/*   Updated: 2022/05/31 19:23:49 by flplace          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	dispatch(int ac, s_list **a, s_list **b)
+void	dispatch(int ac, t_list **a, t_list **b)
 {
 	if(ac == 3)
 		sort_two(a);
@@ -13,8 +25,8 @@ void	dispatch(int ac, s_list **a, s_list **b)
 
 int		main(int ac, char **av)
 {
-	static struct s_list	*a = NULL;
-	static struct s_list	*b = NULL;
+	static t_list	*a = NULL;
+	static t_list	*b = NULL;
 	int						cost;
 
 	cost = 0;

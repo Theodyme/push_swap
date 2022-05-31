@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   index_utilities.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flplace <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:50:44 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 13:52:10 by flplace          ###   ########.fr       */
+/*   Updated: 2022/05/31 19:23:15 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	sort_index(s_list **stack)
+void	sort_index(t_list **stack)
 {
-	struct s_list	*tmp;
+	t_list	*tmp;
 	int		*tab;
 	int		i;
 
@@ -39,10 +39,10 @@ void	sort_index(s_list **stack)
 	return ;
 }
 
-void	fill_tab(int *tab, s_list **stack)
+void	fill_tab(int *tab, t_list **stack)
 {
 	int		i;
-	struct s_list	*tmp;
+	t_list	*tmp;
 
 	i = 0;
 	tmp = (*stack);
