@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:01:45 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 19:13:57 by flplace          ###   ########.fr       */
+/*   Updated: 2022/05/31 23:44:08 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,12 @@ void	sort_two(t_list **stack)
 
 void	sort_three(t_list **stack)
 {
-	int	fst;
-	int	scd;
-	int	trd;
-
-	fst = (*stack)->content;
-	scd = (*stack)->next->content;
-	trd = (*stack)->prev->content;
-	if (fst < scd && fst < trd && trd > scd)
-		return ;
-	if (fst < scd && fst < trd)
-	{
-		i_swap(stack, 'a');
-		i_rotate(stack, 'a');
-	}
-	if (trd == get_min(stack))
-	{
-		if (fst > scd)
-			i_swap(stack, 'a');
+	if ((*stack)->next->content == get_max(stack))
 		i_reverser(stack, 'a');
-	}
-	if (scd < fst && scd < trd)
-	{
-		if (fst < trd)
-			i_swap(stack, 'a');
-		else
-			i_rotate(stack, 'a');
-	}
-	return ;
+	else if ((*stack)->content == get_max(stack))
+		i_rotate(stack, 'a');
+	if ((*stack)->content > (*stack)->next->content)
+		i_swap(stack, 'a');
 }
 
 void	sort_five(t_list **a, t_list **b)

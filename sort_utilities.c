@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:01:53 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 19:31:58 by flplace          ###   ########.fr       */
+/*   Updated: 2022/05/31 23:46:04 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int	get_med(t_list **stack)
 
 void	is_double(t_list **a, t_list **b, t_list **nearest, t_list **target)
 {
-	if ((*a) != (*nearest) && (*b) != (*target) && ((*nearest)->cost * (*target)->cost) > 0)
+	if ((*a) != (*nearest) && (*b) != (*target)
+		&& ((*nearest)->cost * (*target)->cost) > 0)
 	{
 		while (((*target)->cost < 0) && ((*nearest)->cost < 0))
 		{

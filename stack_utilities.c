@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:54:46 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 19:27:17 by flplace          ###   ########.fr       */
+/*   Updated: 2022/05/31 23:59:08 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	checker(t_list **a, t_list **b)
 		return (0);
 	if ((*a) && !(*a)->next)
 	{
-		// ft_printf("OK");
 		return (1);
 	}
 	tmp = (*a);
@@ -30,15 +29,14 @@ int	checker(t_list **a, t_list **b)
 			return (0);
 		tmp = tmp->next;
 	}
-	// ft_printf("OK");
 	return (1);
 }
 
-int    dupchecker(t_list **stack)
+int	dupchecker(t_list **stack)
 {
 	t_list	*tmp;
 	t_list	*node;
-	int checker;
+	int		checker;
 
 	node = *stack;
 	while (node->next != *stack)
@@ -48,7 +46,7 @@ int    dupchecker(t_list **stack)
 		while (tmp->next != (*stack)->next)
 		{
 			if (tmp->content == checker)
-			return (1);
+				return (1);
 			tmp = tmp->next;
 		}
 		node = node->next;
@@ -63,7 +61,7 @@ void	addback(t_list **stack, int nbr)
 
 	node = malloc(sizeof(t_list));
 	node->content = nbr;
-	if(!*stack)
+	if (!*stack)
 	{
 		node->next = node;
 		node->prev = node;
@@ -87,7 +85,7 @@ void	addfront(t_list **stack, int nbr)
 
 	node = malloc(sizeof(t_list));
 	node->content = nbr;
-	if(!*stack)
+	if (!*stack)
 	{
 		node->next = node;
 		node->prev = node;
@@ -103,31 +101,31 @@ void	addfront(t_list **stack, int nbr)
 	return ;
 }
 
-void	stackbuilder(char **av, t_list **stack)
+int	stackbuilder(char **av, t_list **stack)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	j = 1;
-	while(av[j])
+	while (av[j])
 	{
-		i = 0;
-		while(av[j][i])
+		i = -1;
+		while (av[j][++i])
 		{
 			k = 0;
-			while(av[j][i] && (ft_isdigit(av[j][i + k]) == 1 || av[j][i + k] == '-'))
- 			{
+			if ((ft_isalpha(av[j][i])) == 1)
+				return (0);
+			while (av[j][i] && (ft_isdigit(av[j][i + k]) == 1
+				|| av[j][i + k] == '-'))
 				k++;
-			}
 			if (k != 0)
 			{
 				addback(stack, ft_atoi((&av[j][i])));
 				i += (k - 1);
 			}
-			i++;
 		}
 		j++;
 	}
-	return ;
+	return (1);
 }

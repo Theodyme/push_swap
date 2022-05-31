@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:02:00 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 19:30:39 by flplace          ###   ########.fr       */
+/*   Updated: 2022/05/31 23:25:12 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	quicksort(t_list **a, t_list **b)
 			tmp = tmp->next;
 		}
 	}
-	return ;
 }
 
 void	rot_to_i(t_list **stack, char flag, int cost)
@@ -73,14 +72,6 @@ int	rot_cost(t_list **stack, int index)
 
 	up = 1;
 	down = 0;
-	tmp = (*stack);
-	while (tmp->next != (*stack))
-	{
-		if (tmp->index == index)
-			break ;
-		tmp = tmp->next;
-		down++;
-	}
 	tmp = (*stack)->prev;
 	while (tmp->prev != (*stack))
 	{
@@ -89,6 +80,9 @@ int	rot_cost(t_list **stack, int index)
 		tmp = tmp->prev;
 		up++;
 	}
+	down = (get_size(stack) - up);
+	if ((*stack)->index == index)
+		return (0);
 	if (down < up)
 		return (down * (-1));
 	else

@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:06:17 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 19:22:52 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 00:10:50 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_list
 
 /*		Sorting main functions		*/
 void	dispatch(int ac, t_list **a, t_list **b);
+void	sort_large(t_list **a, t_list **b);
 void	sort_five(t_list **a, t_list **b);
 void	sort_three(t_list **stack);
 void	sort_two(t_list **stack);
@@ -40,7 +41,9 @@ int		cost_to_top(t_list **stack, int i);
 void	fill_costs(t_list **a, t_list **b);
 t_list	*find_nearest(t_list **a, int i);
 void	insertsort(t_list **a, t_list **b);
+void	exec_rotation(t_list **stack, t_list **pin, char flag);
 void	is_double(t_list **a, t_list **b, t_list **nearest, t_list **target);
+int		cost_to_top(t_list **stack, int i);
 void	executing_costs(t_list **a, t_list **b, t_list **near, t_list **targ);
 
 /*		Instructions functions		*/
@@ -66,11 +69,12 @@ int		checker(t_list **a, t_list **b);
 int		dupchecker(t_list **stack);
 void	addback(t_list **stack, int nbr);
 void	addfront(t_list **stack, int nbr);
-void	stackbuilder(char **av, t_list **stack);
+int		stackbuilder(char **av, t_list **stack);
 
 /*		Library						*/
 int		ft_abs(int i);
 int		ft_atoi(const char *str);
+int		ft_isalpha(int n);
 int		ft_isdigit(int n);
 int		ft_isspace(char c);
 void	*ft_calloc(size_t count, size_t size);
