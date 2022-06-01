@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:02:12 by flplace           #+#    #+#             */
-/*   Updated: 2022/06/01 00:09:27 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 04:22:34 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,14 @@ int	main(int ac, char **av)
 	static t_list	*b = NULL;
 	int				check;
 
-	if (ac == 1)
+	if (ac == 1 || ft_isempty(av[1]))
 		return (0);
 	check = stackbuilder(av, &a);
 	if (dupchecker(&a) == 1 || check == 0)
+	{
+		ft_printf("Error\n");
 		return (0);
+	}
 	if ((checker(&a, &b)) == 1)
 		return (1);
 	if (ac == 3 || ac == 4 || ac == 6)

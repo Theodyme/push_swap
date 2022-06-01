@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:54:46 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 23:59:08 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 04:22:29 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	checker(t_list **a, t_list **b)
 	if ((*b))
 		return (0);
 	if ((*a) && !(*a)->next)
-	{
 		return (1);
-	}
 	tmp = (*a);
 	while (tmp->next != *a)
 	{
@@ -105,27 +103,13 @@ int	stackbuilder(char **av, t_list **stack)
 {
 	int	i;
 	int	j;
-	int	k;
 
-	j = 1;
-	while (av[j])
+	j = 0;
+	while (av[++j])
 	{
-		i = -1;
-		while (av[j][++i])
-		{
-			k = 0;
-			if ((ft_isalpha(av[j][i])) == 1)
-				return (0);
-			while (av[j][i] && (ft_isdigit(av[j][i + k]) == 1
-				|| av[j][i + k] == '-'))
-				k++;
-			if (k != 0)
-			{
-				addback(stack, ft_atoi((&av[j][i])));
-				i += (k - 1);
-			}
-		}
-		j++;
+		i = avcheck(av[j], stack);
+		if (i == 0)
+			return (0);
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:02:42 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 19:02:43 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 03:41:52 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,29 @@ int	ft_atoi(char *str)
 {
 	int	res;
 	int	minus;
+
+	minus = 1;
+	res = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == 45 || *str == 43)
+	{
+		if (*str == 45)
+			minus = -1;
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		res = res * 10 + (*str - 48);
+		str++;
+	}
+	return (res * minus);
+}
+
+long int	ft_atol(char *str)
+{
+	long int	res;
+	long int	minus;
 
 	minus = 1;
 	res = 0;

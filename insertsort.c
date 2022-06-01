@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:02:29 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 23:26:08 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 04:00:01 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ void	fill_costs(t_list **a, t_list **b)
 	return ;
 }
 
-void	executing_costs(t_list **a, t_list **b, t_list **near, t_list **targ)
+void	executing_costs(t_list **a, t_list **b, t_list **near, t_list **to)
 {
-	is_double(a, b, near, targ);
-	if ((*a) != (*near) || (*b) != (*targ))
+	is_double(a, b, near, to);
+	if ((*a) != (*near) || (*b) != (*to))
 	{
 		exec_rotation(a, near, 'a');
-		exec_rotation(b, targ, 'b');
+		exec_rotation(b, to, 'b');
 	}
 	return ;
 }

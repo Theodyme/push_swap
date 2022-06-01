@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:50:44 by flplace           #+#    #+#             */
-/*   Updated: 2022/05/31 19:23:15 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 03:03:00 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	sort_index(t_list **stack)
 	int		i;
 
 	i = 0;
-	tab = (int *)ft_calloc(sizeof(int), get_size(stack));
+	tab = (int *)malloc(sizeof(int) * get_size(stack));
 	tmp = (*stack);
 	fill_tab(tab, stack);
 	sort_tab(tab, (get_size(stack)));
 	while (tmp->next != (*stack))
 	{
-		while (tab[i] && tmp->content != tab[i])
+		while (tmp->content != tab[i])
 			i++;
 		tmp->index = i + 1;
 		i = 0;
