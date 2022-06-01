@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:06:17 by flplace           #+#    #+#             */
-/*   Updated: 2022/06/01 04:14:32 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 05:15:26 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int			checker(t_list **a, t_list **b);
 int			numchecker(char *str);
 int			dupchecker(t_list **stack);
 void		addback(t_list **stack, int nbr);
+void		free_stack(t_list **stack);
 void		addfront(t_list **stack, int nbr);
 int			stackbuilder(char **av, t_list **stack);
 

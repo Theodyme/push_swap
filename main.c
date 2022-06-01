@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:02:12 by flplace           #+#    #+#             */
-/*   Updated: 2022/06/01 04:22:34 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 05:17:52 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,21 @@ void	sort_large(t_list **a, t_list **b)
 	rot_to_i(a, 'a', cost);
 }
 
+void	free_stack(t_list **stack)
+{
+	t_list	*tmp;
+	t_list	*tofree;
+
+	tmp = (*stack);
+	while (tmp->next != (*stack))
+	{
+		tofree = tmp;
+		tmp = tmp->next;
+		free(tofree);
+	}
+	free(tmp);
+}
+
 int	main(int ac, char **av)
 {
 	static t_list	*a = NULL;
@@ -49,12 +64,17 @@ int	main(int ac, char **av)
 	if (dupchecker(&a) == 1 || check == 0)
 	{
 		ft_printf("Error\n");
+		free_stack(&a);
 		return (0);
 	}
 	if ((checker(&a, &b)) == 1)
+	{
+		free_stack(&a);
 		return (1);
+	}
 	if (ac == 3 || ac == 4 || ac == 6)
 		dispatch(ac, &a, &b);
 	else
 		sort_large(&a, &b);
+	free_stack(&a);
 }
