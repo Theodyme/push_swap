@@ -6,13 +6,13 @@
 #    By: flplace <flplace@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/22 12:20:26 by flplace           #+#    #+#              #
-#    Updated: 2022/06/01 00:16:47 by flplace          ###   ########.fr        #
+#    Updated: 2022/06/02 16:59:14 by flplace          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	printers.c \
-			sorting_small.c \
+SRCS	=	sorting_small.c \
 			instructions.c \
+			check_utilities.c \
 			index_utilities.c \
 			random_utilities.c \
 			insertsort.c \

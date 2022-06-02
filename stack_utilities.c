@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 13:54:46 by flplace           #+#    #+#             */
-/*   Updated: 2022/06/01 04:22:29 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/02 16:48:00 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	dupchecker(t_list **stack)
 	int		checker;
 
 	node = *stack;
-	while (node->next != *stack)
+	while (node && node->next != *stack)
 	{
 		checker = node->content;
 		tmp = node->next;
@@ -103,13 +103,26 @@ int	stackbuilder(char **av, t_list **stack)
 {
 	int	i;
 	int	j;
+	int	k;
 
 	j = 0;
 	while (av[++j])
 	{
-		i = avcheck(av[j], stack);
-		if (i == 0)
-			return (0);
+		i = -1;
+		while (av[j][++i])
+		{
+			k = 0;
+			while (av[j][i] && (ft_isdigit(av[j][i + k]) == 1
+				|| av[j][i + k] == '-'))
+				k++;
+			if (k != 0)
+			{
+				if (numchecker(&av[j][i]) == 0)
+					return (0);
+				addback(stack, ft_atoi((&av[j][i])));
+				i += (k - 1);
+			}
+		}
 	}
 	return (1);
 }

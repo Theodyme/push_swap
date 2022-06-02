@@ -6,7 +6,7 @@
 /*   By: flplace <flplace@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 19:02:00 by flplace           #+#    #+#             */
-/*   Updated: 2022/06/01 05:08:52 by flplace          ###   ########.fr       */
+/*   Updated: 2022/06/01 06:12:04 by flplace          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	quicksort(t_list **a, t_list **b)
 				while (tmp->content != get_min(a))
 					tmp = tmp->next;
 			}
+			tmp = tmp->next;
 			if ((tmp->index <= med) || (get_size(a) == 3))
 			{
-				cost = rot_cost(a, tmp->index);
+				cost = rot_cost(a, tmp->prev->index);
 				rot_to_i(a, 'a', cost);
 				i_push(a, b, 'b');
 			}
-			tmp = tmp->next;
 		}
 	}
 }
